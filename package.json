@@ -1,0 +1,15 @@
+{
+  "name": "cypressautomation",
+  "version": "1.0.0",
+  "description": "Cypress Automation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress": "npx cypress run --browser chrome --spec 'cypress/e2e/3-itera/dashboard.cy.js'"
+  },
+  "author": "Bernadeta",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^12.9.0"
+  }
+}

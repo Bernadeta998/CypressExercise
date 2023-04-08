@@ -1,0 +1,43 @@
+describe('SIGN-UP ITERA', () => {
+    beforeEach(() => {
+      cy.visit('https://itera-qa.azurewebsites.net/UserRegister/NewUser')
+    })
+    it('Success SignUp', () => {
+      cy.get('[id="FirstName"]').clear().type('Bernadeta')
+      cy.get('[id="Surname"]').clear().type('Widiastuti')
+      cy.get('[id="E_post"]').clear().type('16413')
+      cy.get('[id="Mobile"]').clear().type('087877144694')
+      cy.get('[id="Username"]').clear().type('deta4')
+      cy.get('[id="Password"]').clear().type('123456')
+      cy.get('[id="ConfirmPassword"]').clear().type('123456')
+      cy.get('[id="submit"]').click()
+      cy.get('.label-success').should('contain.text','Registration Successful')
+    })
+    
+    it('Failed SignUp (Empty Field)', () => {
+        cy.get('[id="FirstName"]')
+        cy.get('[id="Surname"]')
+        cy.get('[id="E_post"]')
+        cy.get('[id="Mobile"]')
+        cy.get('[id="Username"]')
+        cy.get('[id="Password"]')
+        cy.get('[id="ConfirmPassword"]')
+        cy.get('[id="submit"]').click()
+        cy.get('[id="FirstName-error"]').contains('Please enter first name').should('be.visible')
+        cy.get('[id="Surname-error"]').contains('Please enter surname').should('be.visible')
+        cy.get('[id="Username-error"]').contains('Please enter username').should('be.visible')
+        cy.get('[id="Password-error"]').contains('Please enter password').should('be.visible')
+      })
+
+      it('Failed SignUp (Empty Confirm Password)', () => {
+        cy.get('[id="FirstName"]').clear().type('Bernadeta')
+        cy.get('[id="Surname"]').clear().type('Widiastuti')
+        cy.get('[id="E_post"]').clear().type('16413')
+        cy.get('[id="Mobile"]').clear().type('087877144694')
+        cy.get('[id="Username"]').clear().type('deta5')
+        cy.get('[id="Password"]').clear().type('123456')
+        cy.get('[id="ConfirmPassword"]')
+        cy.get('[id="submit"]').click()
+        cy.get('[id="ConfirmPassword-error"]').should('be.visible')
+      })
+  })
